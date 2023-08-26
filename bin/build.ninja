@@ -1,0 +1,11 @@
+rule cc
+  command = g++ -c $in
+  description = CC $out
+
+rule link
+  command = g++ -o $out $in
+  description = LINK $out
+
+build greeting.o: cc greeting.h greeting.cpp
+build main.o: cc main.cpp
+build main: link main.o greeting.o
